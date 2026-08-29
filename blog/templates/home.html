@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% translate "GroupPortal — Головна" %}
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+```
+<div class="hero-content">
+
+    <div class="hero-badge">
+        <span class="status-dot"></span>
+        GROUP PORTAL
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+        <h1>
+            {% translate "Привіт," %}
+            <span>{{ user.username }}</span>
+        </h1>
+
+        <p>
+            {% translate "Ласкаво просимо назад. Твій простір GroupPortal уже чекає на тебе." %}
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'logout' %}"
+               class="primary-button">
+
+                {% translate "Вийти з акаунта" %}
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+    {% else %}
+
+        <h1>
+            {% translate "Твоя група." %}
+            <br>
+            <span>
+                {% translate "Твій простір." %}
+            </span>
+        </h1>
+
+        <p>
+            {% translate "GroupPortal — сучасний простір для зручної взаємодії учасників групи." %}
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'login' %}"
+               class="primary-button">
+
+                {% translate "Увійти" %}
+
+                <span>→</span>
+
+            </a>
+
+
+            <a href="{% url 'register' %}"
+               class="secondary-button">
+
+                {% translate "Створити акаунт" %}
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<div class="scroll-hint">
+
+    <span></span>
+
+    {% translate "Гортай вниз" %}
+
+</div>
+```
+
+</section>
+
+<section class="features">
+
+```
+<div class="section-title">
+
+    <div class="small-title">
+        ✦ {% translate "МОЖЛИВОСТІ" %}
+    </div>
+
+    <h2>
+
+        {% translate "Все необхідне" %}
+
+        <span>
+            {% translate "в одному місці." %}
+        </span>
+
+    </h2>
+
+</div>
+
+
+
+<div class="feature-grid">
+
+
+    <div class="feature-card">
+
+        <div class="feature-number">
+            01
+        </div>
+
+        <div class="feature-icon">
+            ⚡
+        </div>
+
+        <h3>
+            {% translate "Швидко" %}
+        </h3>
+
+        <p>
+            {% translate "Простий та зрозумілий інтерфейс без зайвих складнощів." %}
+        </p>
+
+    </div>
+
+
+
+    <div class="feature-card">
+
+        <div class="feature-number">
+            02
+        </div>
+
+        <div class="feature-icon">
+            🔐
+        </div>
+
+        <h3>
+            {% translate "Особистий акаунт" %}
+        </h3>
+
+        <p>
+            {% translate "Зареєструйся та отримай власний обліковий запис." %}
+        </p>
+
+    </div>
+
+
+
+    <div class="feature-card">
+
+        <div class="feature-number">
+            03
+        </div>
+
+        <div class="feature-icon">
+            ✦
+        </div>
+
+        <h3>
+            {% translate "Сучасний дизайн" %}
+        </h3>
+
+        <p>
+            {% translate "Мінімалістичний темний дизайн з плавними анімаціями." %}
+        </p>
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<footer class="footer">
+
+```
+<div class="footer-logo">
+    Group<span>Portal</span>
+</div>
+
+<p>
+    {% translate "Простір для твоєї групи." %}
+</p>
+
+<div class="footer-line"></div>
+
+<small>
+    © 2026 GroupPortal
+</small>
+```
+
+</footer>
+
+{% endblock %}
