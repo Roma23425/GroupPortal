@@ -1,0 +1,417 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+    {% block title %}GroupPortal{% endblock %}
+</title>
+
+<link rel="stylesheet"
+      href="{% static 'css/style.css' %}">
+```
+
+</head>
+
+<body>
+
+<div class="background-glow glow-1"></div>
+<div class="background-glow glow-2"></div>
+
+<header class="navbar">
+
+```
+<a href="/" class="logo">
+    Group<span>Portal</span>
+</a>
+
+
+<nav class="nav-menu">
+
+
+    <!-- LANGUAGE -->
+
+    <div class="language-selector">
+
+        <button class="language-button"
+                type="button"
+                onclick="toggleLanguages()">
+
+            🌐
+
+            <span id="current-language">
+                UA
+            </span>
+
+            <span class="language-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="language-menu"
+             id="language-menu">
+
+            <button onclick="changeLanguage('uk')">
+                🇺🇦 Українська
+            </button>
+
+            <button onclick="changeLanguage('en')">
+                🇬🇧 English
+            </button>
+
+            <button onclick="changeLanguage('pl')">
+                🇵🇱 Polski
+            </button>
+
+            <button onclick="changeLanguage('de')">
+                🇩🇪 Deutsch
+            </button>
+
+            <button onclick="changeLanguage('fr')">
+                🇫🇷 Français
+            </button>
+
+            <button onclick="changeLanguage('es')">
+                🇪🇸 Español
+            </button>
+
+            <button onclick="changeLanguage('it')">
+                🇮🇹 Italiano
+            </button>
+
+            <button onclick="changeLanguage('pt')">
+                🇵🇹 Português
+            </button>
+
+            <button onclick="changeLanguage('cs')">
+                🇨🇿 Čeština
+            </button>
+
+            <button onclick="changeLanguage('sk')">
+                🇸🇰 Slovenčina
+            </button>
+
+            <button onclick="changeLanguage('tr')">
+                🇹🇷 Türkçe
+            </button>
+
+            <button onclick="changeLanguage('ja')">
+                🇯🇵 日本語
+            </button>
+
+            <button onclick="changeLanguage('ko')">
+                🇰🇷 한국어
+            </button>
+
+            <button onclick="changeLanguage('zh')">
+                🇨🇳 中文
+            </button>
+
+            <button onclick="changeLanguage('hi')">
+                🇮🇳 हिन्दी
+            </button>
+
+            <button onclick="changeLanguage('ar')">
+                🇸🇦 العربية
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AUTH -->
+
+    {% if user.is_authenticated %}
+
+        <span class="user-name">
+            {{ user.username }}
+        </span>
+
+        <a href="{% url 'logout' %}"
+           class="nav-button logout-button"
+           data-i18n="logout">
+
+            Вийти
+
+        </a>
+
+    {% else %}
+
+        <a href="{% url 'login' %}"
+           class="nav-link"
+           data-i18n="login">
+
+            Увійти
+
+        </a>
+
+        <a href="{% url 'register' %}"
+           class="nav-button"
+           data-i18n="register">
+
+            Реєстрація
+
+        </a>
+
+    {% endif %}
+
+</nav>
+```
+
+</header>
+
+<main>
+
+```
+{% block content %}
+{% endblock %}
+```
+
+</main>
+
+<script>
+
+const translations = {
+
+    uk: {
+        login: "Увійти",
+        register: "Реєстрація",
+        logout: "Вийти"
+    },
+
+    en: {
+        login: "Login",
+        register: "Register",
+        logout: "Logout"
+    },
+
+    pl: {
+        login: "Zaloguj się",
+        register: "Rejestracja",
+        logout: "Wyloguj się"
+    },
+
+    de: {
+        login: "Anmelden",
+        register: "Registrieren",
+        logout: "Abmelden"
+    },
+
+    fr: {
+        login: "Connexion",
+        register: "Inscription",
+        logout: "Déconnexion"
+    },
+
+    es: {
+        login: "Iniciar sesión",
+        register: "Registrarse",
+        logout: "Cerrar sesión"
+    },
+
+    it: {
+        login: "Accedi",
+        register: "Registrazione",
+        logout: "Esci"
+    },
+
+    pt: {
+        login: "Entrar",
+        register: "Registo",
+        logout: "Sair"
+    },
+
+    cs: {
+        login: "Přihlásit se",
+        register: "Registrace",
+        logout: "Odhlásit se"
+    },
+
+    sk: {
+        login: "Prihlásiť sa",
+        register: "Registrácia",
+        logout: "Odhlásiť sa"
+    },
+
+    tr: {
+        login: "Giriş",
+        register: "Kayıt",
+        logout: "Çıkış"
+    },
+
+    ja: {
+        login: "ログイン",
+        register: "登録",
+        logout: "ログアウト"
+    },
+
+    ko: {
+        login: "로그인",
+        register: "회원가입",
+        logout: "로그아웃"
+    },
+
+    zh: {
+        login: "登录",
+        register: "注册",
+        logout: "退出"
+    },
+
+    hi: {
+        login: "लॉगिन",
+        register: "पंजीकरण",
+        logout: "लॉगआउट"
+    },
+
+    ar: {
+        login: "تسجيل الدخول",
+        register: "التسجيل",
+        logout: "تسجيل الخروج"
+    }
+
+};
+
+
+function toggleLanguages() {
+
+    const menu =
+        document.getElementById("language-menu");
+
+    menu.classList.toggle("show");
+
+}
+
+
+function changeLanguage(language) {
+
+    localStorage.setItem(
+        "groupportal-language",
+        language
+    );
+
+    applyLanguage(language);
+
+    document
+        .getElementById("language-menu")
+        .classList.remove("show");
+
+}
+
+
+function applyLanguage(language) {
+
+    const data =
+        translations[language];
+
+    if (!data) return;
+
+
+    document
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
+
+            const key =
+                element.getAttribute("data-i18n");
+
+            if (data[key]) {
+
+                element.textContent =
+                    data[key];
+
+            }
+
+        });
+
+
+    const codes = {
+
+        uk: "UA",
+        en: "EN",
+        pl: "PL",
+        de: "DE",
+        fr: "FR",
+        es: "ES",
+        it: "IT",
+        pt: "PT",
+        cs: "CZ",
+        sk: "SK",
+        tr: "TR",
+        ja: "JP",
+        ko: "KR",
+        zh: "CN",
+        hi: "HI",
+        ar: "AR"
+
+    };
+
+
+    document
+        .getElementById("current-language")
+        .textContent =
+        codes[language] || "UA";
+
+
+    document.documentElement.lang =
+        language;
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "groupportal-language"
+            ) || "uk";
+
+        applyLanguage(savedLanguage);
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const selector =
+            document.querySelector(
+                ".language-selector"
+            );
+
+        const menu =
+            document.getElementById(
+                "language-menu"
+            );
+
+        if (
+            selector &&
+            !selector.contains(event.target)
+        ) {
+
+            menu.classList.remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
