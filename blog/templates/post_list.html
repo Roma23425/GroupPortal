@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Блог — GroupPortal{% endblock %}
+
+{% block content %}
+
+<div class="blog-page">
+
+    <div class="blog-header">
+
+        <div>
+            <div class="auth-badge">
+                GROUP PORTAL
+            </div>
+
+            <h1>
+                Останні публікації
+            </h1>
+
+            <p class="blog-description">
+                Думки, новини та цікаві матеріали спільноти GroupPortal
+            </p>
+        </div>
+
+        {% if user.is_authenticated %}
+            <a href="#" class="form-button blog-create-button">
+                Створити пост
+                <span>→</span>
+            </a>
+        {% endif %}
+
+    </div>
+
+
+    {% if posts %}
+
+        <div class="posts-list">
+
+            {% for post in posts %}
+
+                <article class="post-card">
+
+                    <div class="post-card-header">
+
+                        <div class="post-author">
+
+                            <div class="author-avatar">
+                                {{ post.author.username|first|upper }}
+                            </div>
+
+                            <div class="author-info">
+
+                                <span class="author-name">
+                                    {% if post.author.name %}
+                                        {{ post.author.name }}
+                                    {% else %}
+                                        {{ post.author.username }}
+                                    {% endif %}
+                                </span>
+
+                                <span class="post-date">
+                                    {{ post.created_at|date:"d.m.Y H:i" }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        {% if post.updated_at != post.created_at %}
+                            <span class="post-updated">
+                                Оновлено {{ post.updated_at|date:"d.m.Y H:i" }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="post-content">
+
+                        <h2 class="post-title">
+                            {{ post.title }}
+                        </h2>
+
+                        <div class="post-text">
+                            {{ post.content|safe }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-card-footer">
+
+                        <div class="post-comments">
+
+                            <span class="comment-icon">
+                                💬
+                            </span>
+
+                            <span>
+                                {{ post.comments.count }}
+                            </span>
+
+                            {% if post.comments.count == 1 %}
+                                коментар
+                            {% else %}
+                                коментарів
+                            {% endif %}
+
+                        </div>
+
+
+                        <a href="{% url 'post_detail' post.pk %}" class="read-more">
+                            Читати далі
+                            <span>→</span>
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-posts">
+
+            <div class="empty-icon">
+                ✦
+            </div>
+
+            <h2>
+                Публікацій поки немає
+            </h2>
+
+            <p>
+                Тут з'являться пости, коли хтось із користувачів
+                опублікує перший матеріал.
+            </p>
+
+            {% if user.is_authenticated %}
+                <a href="#" class="form-button">
+                    Створити перший пост
+                    <span>→</span>
+                </a>
+            {% endif %}
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

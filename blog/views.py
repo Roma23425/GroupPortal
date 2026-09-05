@@ -12,24 +12,24 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm, CommentForm
 
 class GroupInfoView(TemplateView):
     """Представлення для головної сторінки з інформацією про групу"""
-    template_name = 'group_info.html'
+    template_name = 'home.html'
 
 class RegisterView(CreateView):
     """Представлення для реєстрації нових користувачів"""
     form_class = CustomUserCreationForm
-    template_name = 'registration/register.html'
+    template_name = 'register.html'
     success_url = reverse_lazy('login') 
 
 
 class CustomLoginView(LoginView):
     """Представлення для логіну"""
     form_class = CustomAuthenticationForm 
-    template_name = 'registration/login.html'
+    template_name = 'login.html'
 
 class PostListView(ListView):
     """Представлення для списку постів"""
     model = Post
-    template_name = 'blog/post_list.html'
+    template_name = 'post_list.html'
     context_object_name = 'posts'
     ordering = ['-id'] 
 
@@ -37,7 +37,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     """Представлення для детального перегляду поста та виводу коментарів"""
     model = Post
-    template_name = 'blog/post_detail.html'
+    template_name = 'post_detail.html'
     context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
