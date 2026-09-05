@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Реєстрація — GroupPortal{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+```
+<div class="auth-card register-card">
+
+    <div class="auth-icon">
+        ✦
+    </div>
+
+    <div class="auth-badge">
+        GROUP PORTAL
+    </div>
+
+    <h1>
+        Створити акаунт
+    </h1>
+
+    <p class="auth-description">
+        Приєднуйся до GroupPortal
+    </p>
+
+
+    {% if error %}
+
+    <div class="form-error">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    <form method="post">
+
+        {% csrf_token %}
+
+
+        <div class="input-group">
+
+            <label for="id_username">
+                Username
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                id="id_username"
+                placeholder="Придумай username"
+                autocomplete="username"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="id_name">
+                Ім'я
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                id="id_name"
+                placeholder="Твоє ім'я"
+                autocomplete="name"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="id_email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                id="id_email"
+                placeholder="example@email.com"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="id_password1">
+                Пароль
+            </label>
+
+            <input
+                type="password"
+                name="password1"
+                id="id_password1"
+                placeholder="Придумай пароль"
+                autocomplete="new-password"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="id_password2">
+                Повторіть пароль
+            </label>
+
+            <input
+                type="password"
+                name="password2"
+                id="id_password2"
+                placeholder="Повтори пароль"
+                autocomplete="new-password"
+                required
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="form-button">
+
+            Створити акаунт
+
+            <span>→</span>
+
+        </button>
+
+    </form>
+
+
+    <div class="auth-footer">
+
+        <span>
+            Вже маєш акаунт?
+        </span>
+
+        <a href="{% url 'login' %}">
+            Увійти
+        </a>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}
