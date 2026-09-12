@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth.views import LogoutView
 from . import views
 
 urlpatterns = [
@@ -9,7 +8,7 @@ urlpatterns = [
     # Доступні за адресами: http://127.0.0.1:8000/register/ тощо
     path('register/', views.RegisterView.as_view(), name='register'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(next_page='group_info'), name='logout'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
 
     # Доступні за адресами: http://127.0.0.1:8000/blog/ тощо
     path('blog/', views.PostListView.as_view(), name='post_list'),

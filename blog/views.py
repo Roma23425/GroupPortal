@@ -26,6 +26,10 @@ class CustomLoginView(LoginView):
     form_class = CustomAuthenticationForm 
     template_name = 'login.html'
 
+class CustomLogoutView(LogoutView):
+    """Представлення для виходу"""
+    next_page = 'group_info'
+
 class PostListView(ListView):
     """Представлення для списку постів"""
     model = Post

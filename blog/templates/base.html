@@ -139,13 +139,10 @@
             {{ user.username }}
         </span>
 
-        <a href="{% url 'logout' %}"
-           class="nav-button logout-button"
-           data-i18n="logout">
-
-            Вийти
-
-        </a>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" data-i18n="logout" class="nav-button logout-button">Вихід</button>
+        </form>
 
     {% else %}
 
