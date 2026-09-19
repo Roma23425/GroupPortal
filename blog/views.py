@@ -84,7 +84,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Редагування поста (лише для автора або модератора/адміна)"""
     model = Post
     form_class = PostForm
-    template_name = 'blog/post_form.html'
+    template_name = 'post_form.html'
 
     def test_func(self):
         post = self.get_object()

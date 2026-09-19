@@ -2236,6 +2236,263 @@ body {
 }
 
 
+/* ================= CKEDITOR ================= */
+
+.editor-wrapper {
+    width: 100%;
+}
+
+.editor-wrapper .django-ckeditor-5 {
+    width: 100%;
+}
+
+
+/* CKEditor main area */
+
+.ck.ck-editor {
+    width: 100%;
+}
+
+.ck.ck-toolbar {
+    background: #111018 !important;
+
+    border: 1px solid #292531 !important;
+
+    border-bottom: none !important;
+
+    border-radius: 13px 13px 0 0 !important;
+}
+
+.ck.ck-editor__main > .ck-editor__editable {
+    min-height: 320px;
+
+    background: #0b0a10 !important;
+
+    color: #f5f3f8 !important;
+
+    border: 1px solid #292531 !important;
+
+    border-radius: 0 0 13px 13px !important;
+
+    padding: 20px !important;
+}
+
+.ck.ck-editor__main > .ck-editor__editable:focus {
+    border-color: #7d4de0 !important;
+
+    box-shadow:
+        0 0 0 2px rgba(125, 77, 224, 0.10) !important;
+}
+
+
+/* CKEditor text */
+
+.ck-content p {
+    color: #e9e6ed;
+}
+
+.ck-content h1,
+.ck-content h2,
+.ck-content h3 {
+    color: #ffffff;
+}
+
+.ck-content a {
+    color: #a66cff;
+}
+
+
+/* CKEditor buttons */
+
+.ck.ck-button {
+    color: #aaa5b1 !important;
+}
+
+.ck.ck-button:hover {
+    background: #211d2a !important;
+}
+
+.ck.ck-button.ck-on {
+    background: #342052 !important;
+    color: #c09aff !important;
+}
+
+
+/* ================= ERRORS ================= */
+
+.form-errors,
+.field-error {
+    color: #ff7777;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+}
+
+.form-errors {
+    padding: 14px 16px;
+
+    background: rgba(180, 50, 70, 0.08);
+
+    border: 1px solid rgba(220, 70, 90, 0.25);
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #211e28;
+}
+
+.cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    border-radius: 12px;
+
+    border: 1px solid #2b2731;
+
+    background: #121017;
+
+    color: #aaa5b0;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #1b1821;
+    color: #ffffff;
+}
+
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #7541e6,
+        #914df2
+    );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(117, 65, 230, 0.22);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        filter 0.2s;
+}
+
+.submit-btn span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 12px 32px rgba(117, 65, 230, 0.32);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        height: auto;
+
+        padding: 18px 20px;
+
+        gap: 15px;
+    }
+
+    .header-right {
+        gap: 10px;
+    }
+
+    .username {
+        display: none;
+    }
+
+    .back-link {
+        font-size: 13px;
+    }
+
+    .page {
+        padding: 30px 15px 60px;
+    }
+
+    .form-container {
+        padding: 25px 20px;
+
+        border-radius: 18px;
+    }
+
+    .form-header h1 {
+        font-size: 32px;
+    }
+
+    .buttons {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-btn,
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+
 /* =========================================================
    GROUPPORTAL — CREATE POST
    NEON PURPLE STYLE
