@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if object %}Редагувати пост{% else %}Створити пост{% endif %} — GroupPortal
+{% endblock %}
+
+{% block content %}
+
+<div class="post-create-page">
+
+    <!-- Декоративні елементи -->
+    <div class="neon-line neon-line-1"></div>
+    <div class="neon-line neon-line-2"></div>
+    <div class="neon-line neon-line-3"></div>
+
+    <div class="floating-dot dot-1"></div>
+    <div class="floating-dot dot-2"></div>
+    <div class="floating-dot dot-3"></div>
+    <div class="floating-dot dot-4"></div>
+
+    <div class="post-card">
+
+        <div class="post-top">
+
+            <a
+                href="{% if object %}{% url 'post_detail' object.pk %}{% else %}{% url 'post_list' %}{% endif %}"
+                class="back-post"
+            >
+                ← &nbsp; До постів
+            </a>
+
+        </div>
+
+
+        <div class="post-heading">
+
+            <div>
+                <h1>
+                    {% if object %}
+                        Редагувати <span>пост</span>
+                    {% else %}
+                        Створити <span>пост</span>
+                    {% endif %}
+                </h1>
+
+                <p>
+                    {% if object %}
+                        Внесіть зміни до свого поста
+                    {% else %}
+                        Поділіться своїми думками з групою
+                    {% endif %}
+                </p>
+            </div>
+
+
+            <div class="post-icon">
+                <div class="icon-document">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="icon-pencil"></div>
+            </div>
+
+        </div>
+
+
+        <div class="form-divider"></div>
+
+
+        <form method="post" class="post-form">
+
+            {% csrf_token %}
+
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+
+            <!-- TITLE -->
+
+            <div class="form-field">
+
+                <label for="{{ form.title.id_for_label }}">
+                    <span class="label-icon">✎</span>
+                    Заголовок
+                </label>
+
+                {{ form.title }}
+
+                {% if form.title.errors %}
+                    <div class="field-error">
+                        {{ form.title.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="form-field">
+
+                <label for="{{ form.content.id_for_label }}">
+                    <span class="label-icon">▤</span>
+                    Контент
+                </label>
+
+                <div class="ckeditor-container">
+                    {{ form.content }}
+                </div>
+
+                {% if form.content.errors %}
+                    <div class="field-error">
+                        {{ form.content.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <div class="form-divider bottom-divider"></div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="post-form-buttons">
+
+                <a
+                    href="{% if object %}{% url 'post_detail' object.pk %}{% else %}{% url 'post_list' %}{% endif %}"
+                    class="cancel-button"
+                >
+                    ✕
+                    Скасувати
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="publish-button"
+                >
+                    <span class="send-icon">➤</span>
+
+                    {% if object %}
+                        Зберегти зміни
+                    {% else %}
+                        Опублікувати пост
+                    {% endif %}
+
+                    <span class="arrow">→</span>
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{{ form.media }}
+
+{% endblock %}

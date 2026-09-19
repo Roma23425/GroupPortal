@@ -17,10 +17,14 @@ class User(AbstractUser):
         return self.username
 class Post(models.Model):
     title = models.CharField(max_length=255)
-
     content = CKEditor5Field('Контент', config_name='extends')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    # Add these fields:
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата створення")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 
-    author = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts')
+    class Meta:
+        ordering = ['-created_at'] # Sets default ordering at the database level
 
     def __str__(self):
         return self.title

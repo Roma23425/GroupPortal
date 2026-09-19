@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    
 ]
 
 AUTH_USER_MODEL = 'blog.User'
@@ -46,11 +49,13 @@ AUTH_USER_MODEL = 'blog.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -106,7 +111,68 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
+
+LANGUAGES = [
+    ('uk', _('Українська')),
+    ('en', _('English')),
+    ('pl', _('Polski')),
+    ('de', _('Deutsch')),
+    ('fr', _('Français')),
+    ('es', _('Español')),
+    ('it', _('Italiano')),
+    ('pt', _('Português')),
+    ('cs', _('Čeština')),
+    ('sk', _('Slovenčina')),
+    ('tr', _('Türkçe')),
+    ('ja', _('日本語')),
+    ('ko', _('한국어')),
+    ('zh-hans', _('中文')),
+    ('hi', _('हिन्दी')),
+    ('ar', _('العربية')),
+]
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'imageUpload',
+            'undo',
+            'redo',
+        ],
+    },
+
+    'extends': {
+        'toolbar': [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'imageUpload',
+            'mediaEmbed',
+            'undo',
+            'redo',
+        ],
+    },
+}
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 TIME_ZONE = 'UTC'
 
@@ -120,6 +186,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -129,3 +199,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_REDIRECT_URL = 'group_info'
+LOGOUT_REDIRECT_URL = 'group_info'
