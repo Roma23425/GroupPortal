@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Видалення поста — GroupPortal{% endblock %}
+
+{% block content %}
+
+<div class="post-page">
+
+    <section class="create-post-section">
+
+        <div class="section-heading">
+
+            <div class="small-title" style="color: #ff4d4d;">
+                ✦ НЕБЕЗПЕЧНА ДІЯ
+            </div>
+
+            <h2>
+                Видалити пост?
+            </h2>
+
+            <p>
+                Ви впевнені, що хочете назавжди видалити пост 
+                <strong>"{{ object.title }}"</strong>? 
+                <br>
+                Цю дію неможливо буде скасувати.
+            </p>
+
+        </div>
+
+        <div class="create-post-card">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                    
+                    <button 
+                        type="submit" 
+                        class="form-button" 
+                        style="background-color: #dc3545; border-color: #dc3545;">
+
+                        Так, видалити
+
+                        <span>×</span>
+
+                    </button>
+
+                    <a href="javascript:history.back()"
+                       class="nav-button" 
+                       style="text-decoration: none;">
+                        
+                        Ні, повернутися
+                        
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

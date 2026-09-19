@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import User, Comment, Post
 
 
@@ -68,5 +69,8 @@ class PostForm(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введіть заголовок...'}),
+            "content": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"}, config_name="extends"
+            )
             # The CKEditor5 widget is automatically applied to the content field because of the model definition.
         }
