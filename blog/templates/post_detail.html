@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Пост — GroupPortal{% endblock %}
+
+{% block content %}
+
+<div class="post-page">
+
+
+<article class="post-card">
+
+    <div class="post-header">
+
+        <div class="post-author">
+
+            <div class="author-avatar">
+                {{ post.author.username|first|upper }}
+            </div>
+
+            <div>
+                <div class="author-name">
+                    {{ post.author.username }}
+                </div>
+
+                <div class="post-date">
+                    {{ post.created_at|date:"d.m.Y H:i" }}
+                </div>
+            </div>
+
+        </div>
+            {% if user.is_authenticated %}
+            {% if user == post.author or user.role == 'admin' or user.role == 'moderator' %}
+                <div class="post-actions" style="margin-left: auto;">
+                    <a href="{% url 'post_update' post.pk %}" class="nav-button" style="text-decoration: none; margin-right: 10px;">
+                        ✎ Редагувати
+                    </a>
+                
+                    <a href="{% url 'post_delete' post.pk %}" class="nav-button" style="text-decoration: none; color: #ff4d4d; border-color: #ff4d4d;">
+                        🗑 Видалити
+                    </a>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="post-content">
+
+        <h1>
+            {{ post.title }}
+        </h1>
+
+        <div class="post-text">
+            {{ post.content|safe }}
+        </div>
+
+    </div>
+
+    <div class="post-footer">
+
+        <span>
+            💬 {{ comments|length }} коментарів
+        </span>
+
+    </div>
+
+</article>
+
+
+<section class="comments-section">
+
+    <div class="section-heading">
+
+        <div class="small-title">
+            ✦ ОБГОВОРЕННЯ
+        </div>
+
+        <h2>
+            Коментарі
+        </h2>
+
+    </div>
+
+
+    {% if comments %}
+
+        <div class="comments-list">
+
+            {% for comment in comments %}
+
+                <div class="comment-card">
+
+                    <div class="comment-avatar">
+                        {{ comment.author.username|first|upper }}
+                    </div>
+
+                    <div class="comment-body">
+
+                        <div class="comment-top">
+
+                            <strong>
+                                {{ comment.author.username }}
+                            </strong>
+
+                            <span>
+                                {{ comment.created_at|date:"d.m.Y H:i" }}
+                            </span>
+
+                        </div>
+
+                        <p>
+                            {{ comment.text }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-comments">
+
+            <div class="empty-icon">
+                💬
+            </div>
+
+            <h3>
+                Поки немає коментарів
+            </h3>
+
+            <p>
+                Будь першим, хто залишить коментар.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+
+        <div class="comment-form-card">
+
+            <h3>
+                Залишити коментар
+            </h3>
+
+            <form method="post" action="{% url 'add_comment' post.pk %}">
+
+                {% csrf_token %}
+
+                <textarea
+                    name="text"
+                    placeholder="Напиши свій коментар..."
+                    rows="4"
+                    required></textarea>
+
+                <button
+                    type="submit"
+                    class="form-button">
+
+                    Опублікувати
+
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    {% else %}
+
+        <div class="login-comment">
+
+            <p>
+                Щоб залишити коментар, увійди в акаунт.
+            </p>
+
+            <a href="{% url 'login' %}"
+               class="primary-button">
+
+                Увійти
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+</div>
+
+{% endblock %}
