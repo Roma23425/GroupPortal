@@ -96,7 +96,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Видалення поста (лише для автора або модератора/адміна)"""
     model = Post
-    template_name = 'blog/post_confirm_delete.html'
+    template_name = 'post_confirm_delete.html'
     success_url = reverse_lazy('post_list')
 
     def test_func(self):

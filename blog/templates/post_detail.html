@@ -28,7 +28,19 @@
             </div>
 
         </div>
-
+            {% if user.is_authenticated %}
+            {% if user == post.author or user.role == 'admin' or user.role == 'moderator' %}
+                <div class="post-actions" style="margin-left: auto;">
+                    <a href="{% url 'post_update' post.pk %}" class="nav-button" style="text-decoration: none; margin-right: 10px;">
+                        ✎ Редагувати
+                    </a>
+                
+                    <a href="{% url 'post_delete' post.pk %}" class="nav-button" style="text-decoration: none; color: #ff4d4d; border-color: #ff4d4d;">
+                        🗑 Видалити
+                    </a>
+                </div>
+            {% endif %}
+        {% endif %}
     </div>
 
     <div class="post-content">
@@ -182,82 +194,6 @@
     {% endif %}
 
 </section>
-
-
-{% if user.is_authenticated %}
-
-<section class="create-post-section">
-
-    <div class="section-heading">
-
-        <div class="small-title">
-            ✦ НОВИЙ ПОСТ
-        </div>
-
-        <h2>
-            Створити пост
-        </h2>
-
-        <p>
-            Поділися чимось із групою.
-        </p>
-
-    </div>
-
-    <div class="create-post-card">
-
-        <form method="post">
-
-            {% csrf_token %}
-
-            <div class="input-group">
-
-                <label for="post-title">
-                    Заголовок
-                </label>
-
-                <input
-
-                type="text"
-                    id="post-title"
-                    name="title"
-                    placeholder="Назва твого поста..."
-                    required>
-
-            </div>
-
-            <div class="input-group">
-
-                <label for="post-content">
-                    Текст
-                </label>
-
-                <textarea
-                    id="post-content"
-                    name="content"
-                    rows="8"
-                    placeholder="Про що хочеш розповісти?"
-                    required></textarea>
-
-            </div>
-
-            <button
-                type="submit"
-                class="form-button">
-
-                Створити пост
-
-                <span>→</span>
-
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-{% endif %}
 
 </div>
 
