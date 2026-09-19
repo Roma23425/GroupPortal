@@ -71,7 +71,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     """Створення нового поста (лише для авторизованих)"""
     model = Post
     form_class = PostForm
-    template_name = 'blog/post_form.html'
+    template_name = 'post_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

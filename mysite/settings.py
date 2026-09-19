@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    
 ]
 
 AUTH_USER_MODEL = 'blog.User'
@@ -130,6 +132,44 @@ LANGUAGES = [
     ('ar', _('العربية')),
 ]
 
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'imageUpload',
+            'undo',
+            'redo',
+        ],
+    },
+
+    'extends': {
+        'toolbar': [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'imageUpload',
+            'mediaEmbed',
+            'undo',
+            'redo',
+        ],
+    },
+}
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]

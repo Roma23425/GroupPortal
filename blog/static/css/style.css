@@ -2013,3 +2013,1151 @@ textarea:focus {
     }
 
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(112, 60, 220, 0.10),
+            transparent 35%
+        ),
+        #08070d;
+    color: #f5f3f8;
+    min-height: 100vh;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    height: 82px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(8, 7, 13, 0.96);
+    border-bottom: 1px solid #191720;
+}
+
+.logo {
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #9a62ff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.username {
+    color: #a6a2ad;
+    font-size: 15px;
+}
+
+.back-link {
+    color: #aaa6b2;
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: #a56bff;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-btn {
+    border: 1px solid #292631;
+    background: #15131b;
+
+    color: #c4c0ca;
+
+    padding: 11px 20px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #211d2a;
+    border-color: #51358a;
+    color: #ffffff;
+}
+
+
+/* ================= PAGE ================= */
+
+.page {
+    width: 100%;
+    min-height: calc(100vh - 82px);
+
+    display: flex;
+    justify-content: center;
+
+    padding: 70px 20px 100px;
+}
+
+
+/* ================= FORM CONTAINER ================= */
+
+.form-container {
+    width: 100%;
+    max-width: 900px;
+
+    background: rgba(14, 12, 21, 0.92);
+
+    border: 1px solid #211d2b;
+
+    border-radius: 24px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        0 0 50px rgba(112, 60, 220, 0.05);
+}
+
+
+/* ================= TITLE ================= */
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h1 {
+    font-size: 42px;
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    color: #ffffff;
+
+    margin-bottom: 12px;
+}
+
+.form-header h1::first-letter {
+    color: #ffffff;
+}
+
+.form-header p {
+    color: #88838f;
+    font-size: 16px;
+}
+
+
+/* ================= FIELDS ================= */
+
+.post-form {
+    width: 100%;
+}
+
+.field {
+    margin-bottom: 28px;
+}
+
+.field label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #ddd9e2;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* TITLE INPUT */
+
+.form-control {
+    width: 100%;
+
+    background: #0b0a10;
+
+    border: 1px solid #292531;
+
+    color: #f5f3f8;
+
+    padding: 16px 18px;
+
+    border-radius: 13px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+.form-control::placeholder {
+    color: #5e5965;
+}
+
+.form-control:focus {
+    border-color: #7d4de0;
+
+    background: #0e0c14;
+
+    box-shadow:
+        0 0 0 3px rgba(125, 77, 224, 0.12);
+}
+
+
+/* =========================================================
+   GROUPPORTAL — CREATE POST
+   NEON PURPLE STYLE
+========================================================= */
+
+.post-create-page {
+    position: relative;
+
+    min-height: calc(100vh - 80px);
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(121, 55, 255, 0.10),
+            transparent 35%
+        );
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+========================================================= */
+
+.post-create-page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 25%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(126, 56, 255, 0.12),
+        transparent 65%
+    );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+
+    animation: backgroundPulse 5s ease-in-out infinite;
+}
+
+
+@keyframes backgroundPulse {
+
+    0%, 100% {
+        opacity: .5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: .9;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   NEON LINES
+========================================================= */
+
+.neon-line {
+    position: absolute;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #8b45ff,
+        #c084ff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 8px #8b45ff,
+        0 0 20px rgba(139, 69, 255, .7);
+
+    opacity: .55;
+
+    pointer-events: none;
+}
+
+.neon-line-1 {
+    width: 360px;
+
+    top: 40px;
+    left: -80px;
+
+    transform: rotate(-27deg);
+
+    animation: lineMove1 5s ease-in-out infinite;
+}
+
+.neon-line-2 {
+    width: 430px;
+
+    right: -120px;
+    bottom: 130px;
+
+    transform: rotate(-27deg);
+
+    animation: lineMove2 6s ease-in-out infinite;
+}
+
+.neon-line-3 {
+    width: 250px;
+
+    right: -50px;
+    top: 330px;
+
+    transform: rotate(-28deg);
+
+    opacity: .25;
+}
+
+
+@keyframes lineMove1 {
+
+    0%, 100% {
+        transform: rotate(-27deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(-27deg) translateX(35px);
+    }
+}
+
+
+@keyframes lineMove2 {
+
+    0%, 100% {
+        transform: rotate(-27deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(-27deg) translateX(-35px);
+    }
+}
+
+
+/* =========================================================
+   FLOATING DOTS
+========================================================= */
+
+.floating-dot {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #9d5cff;
+
+    box-shadow:
+        0 0 8px #9d5cff,
+        0 0 20px #7b3cff;
+
+    pointer-events: none;
+
+    animation: floatingDot 4s ease-in-out infinite;
+}
+
+.dot-1 {
+    top: 120px;
+    left: 16%;
+}
+
+.dot-2 {
+    top: 270px;
+    right: 12%;
+
+    animation-delay: 1s;
+}
+
+.dot-3 {
+    bottom: 190px;
+    left: 9%;
+
+    animation-delay: 2s;
+}
+
+.dot-4 {
+    bottom: 100px;
+    right: 25%;
+
+    animation-delay: 3s;
+}
+
+
+@keyframes floatingDot {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translateY(-18px);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.post-card {
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 28px 48px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 13, 32, .97),
+            rgba(9, 8, 17, .96)
+        );
+
+    border: 1px solid rgba(142, 74, 255, .45);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.015),
+        0 25px 90px rgba(0,0,0,.55),
+        0 0 60px rgba(113, 50, 255, .08);
+
+    animation: cardAppear .7s ease-out;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* світіння рамки */
+
+.post-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(151, 80, 255, .7),
+        transparent 45%,
+        transparent 70%,
+        rgba(151, 80, 255, .5),
+        transparent
+    );
+
+    opacity: .55;
+
+    z-index: -1;
+
+    animation: borderGlow 7s linear infinite;
+}
+
+
+@keyframes borderGlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-post {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 15px;
+
+    border-radius: 12px;
+
+    background: rgba(91, 45, 170, .10);
+
+    border: 1px solid rgba(125, 72, 220, .35);
+
+    color: #b8a5d8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: .25s;
+}
+
+.back-post:hover {
+    color: white;
+
+    background: rgba(116, 55, 220, .20);
+
+    border-color: #8148e8;
+
+    box-shadow:
+        0 0 20px rgba(123, 58, 235, .20);
+
+    transform: translateX(-3px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.post-heading {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+
+.post-heading h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 5vw, 58px);
+
+    line-height: 1;
+
+    letter-spacing: -2.5px;
+
+    color: #f8f7fb;
+
+    font-weight: 800;
+}
+
+
+.post-heading h1 span {
+    color: #9654ff;
+
+    text-shadow:
+        0 0 20px rgba(150, 84, 255, .25);
+}
+
+
+.post-heading p {
+    margin-top: 14px;
+
+    color: #85808f;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   DOCUMENT ICON
+========================================================= */
+
+.post-icon {
+    position: relative;
+
+    width: 105px;
+    height: 90px;
+
+    margin-right: 20px;
+}
+
+
+.icon-document {
+    position: absolute;
+
+    right: 10px;
+    top: 5px;
+
+    width: 48px;
+    height: 60px;
+
+    border: 3px solid #9958ff;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 0 15px rgba(145, 75, 255, .7);
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+.icon-document span {
+    display: block;
+
+    width: 27px;
+    height: 3px;
+
+    margin-left: 8px;
+    margin-top: 12px;
+
+    border-radius: 5px;
+
+    background: #a56aff;
+
+    box-shadow:
+        0 0 8px #9b57ff;
+}
+
+
+.icon-pencil {
+    position: absolute;
+
+    width: 42px;
+    height: 10px;
+
+    right: -3px;
+    bottom: 20px;
+
+    border-radius: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #6f35dc,
+        #bc7aff
+    );
+
+    transform: rotate(-45deg);
+
+    box-shadow:
+        0 0 15px rgba(156, 82, 255, .8);
+
+    animation: pencilFloat 3s ease-in-out infinite;
+}
+
+
+@keyframes iconFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+@keyframes pencilFloat {
+
+    0%, 100% {
+        transform: rotate(-45deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-45deg) translateY(-5px);
+    }
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.form-divider {
+    height: 1px;
+
+    margin: 25px 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(139, 69, 255, .25),
+        rgba(139, 69, 255, .05),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.form-field {
+    margin-bottom: 25px;
+}
+
+
+.form-field > label {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 10px;
+
+    color: #bd9aff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.label-icon {
+    font-size: 19px;
+
+    color: #9654ff;
+
+    text-shadow:
+        0 0 10px rgba(150, 84, 255, .7);
+}
+
+
+/* =========================================================
+   TITLE INPUT
+========================================================= */
+
+.post-form .form-control {
+    width: 100%;
+
+    height: 54px;
+
+    padding: 0 18px;
+
+    border-radius: 13px;
+
+    border: 1px solid #342553;
+
+    outline: none;
+
+    background: rgba(8, 7, 16, .85);
+
+    color: #f5f1fb;
+
+    font-size: 16px;
+
+    transition: .25s;
+}
+
+
+.post-form .form-control::placeholder {
+    color: #686172;
+}
+
+
+.post-form .form-control:hover {
+    border-color: #624098;
+}
+
+
+.post-form .form-control:focus {
+    border-color: #9253ff;
+
+    box-shadow:
+        0 0 0 3px rgba(137, 69, 255, .10),
+        0 0 25px rgba(126, 58, 255, .10);
+}
+
+
+/* =========================================================
+   CKEDITOR
+========================================================= */
+
+.ck.ck-editor {
+    width: 100% !important;
+}
+
+
+.ck.ck-toolbar {
+    min-height: 48px !important;
+
+    background: #100d19 !important;
+
+    border: 1px solid #38265a !important;
+
+    border-bottom: 1px solid #38265a !important;
+
+    border-radius: 13px 13px 0 0 !important;
+}
+
+
+.ck.ck-toolbar .ck-button {
+    color: #a99bbd !important;
+
+    transition: .2s !important;
+}
+
+
+.ck.ck-toolbar .ck-button:hover {
+    background: #24163b !important;
+
+    color: #c69cff !important;
+}
+
+
+.ck.ck-toolbar .ck-button.ck-on {
+    background: #39205c !important;
+
+    color: #c69cff !important;
+}
+
+
+.ck.ck-editor__main > .ck-editor__editable {
+    min-height: 260px !important;
+
+    padding: 18px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0a0910,
+            #0c0a12
+        ) !important;
+
+    border: 1px solid #38265a !important;
+
+    border-top: none !important;
+
+    border-radius: 0 0 13px 13px !important;
+
+    color: #eeeaf4 !important;
+
+    box-shadow:
+        inset 0 0 30px rgba(105, 50, 190, .025) !important;
+}
+
+
+.ck.ck-editor__main > .ck-editor__editable.ck-focused {
+    border-color: #8b4cff !important;
+
+    box-shadow:
+        0 0 0 1px #8b4cff,
+        0 0 25px rgba(139, 76, 255, .12) !important;
+}
+
+
+.ck-content {
+    color: #eeeaf4 !important;
+}
+
+
+.ck-content p {
+    color: #eeeaf4 !important;
+}
+
+
+.ck-content h1,
+.ck-content h2,
+.ck-content h3 {
+    color: white !important;
+}
+
+
+/* =========================================================
+   HIDE CKEDITOR BRANDING
+========================================================= */
+
+/*
+   Прибираємо саме нижній напис Powered by CKEditor.
+*/
+
+.ck-powered-by {
+    display: none !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.post-form-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.cancel-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    height: 52px;
+
+    padding: 0 22px;
+
+    border-radius: 13px;
+
+    border: 1px solid #30283d;
+
+    background: rgba(18, 15, 25, .8);
+
+    color: #aaa2b4;
+
+    text-decoration: none;
+
+    transition: .25s;
+}
+
+
+.cancel-button:hover {
+    color: white;
+
+    border-color: #58436f;
+
+    background: #191522;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PUBLISH BUTTON
+========================================================= */
+
+.publish-button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    height: 52px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #7738e8,
+        #a64cff
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 30px rgba(126, 57, 235, .35);
+
+    transition: .25s;
+}
+
+
+.publish-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: buttonShine 3.5s infinite;
+}
+
+
+@keyframes buttonShine {
+
+    0% {
+        left: -100%;
+    }
+
+    45%, 100% {
+        left: 140%;
+    }
+}
+
+
+.publish-button:hover {
+    transform: translateY(-3px) scale(1.01);
+
+    box-shadow:
+        0 12px 40px rgba(126, 57, 235, .50),
+        0 0 25px rgba(155, 75, 255, .25);
+}
+
+
+.publish-button:active {
+    transform: scale(.98);
+}
+
+
+.send-icon {
+    font-size: 16px;
+}
+
+
+.arrow {
+    font-size: 20px;
+
+    transition: .2s;
+}
+
+
+.publish-button:hover .arrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+.form-errors,
+.field-error {
+    color: #ff7c8e;
+
+    font-size: 13px;
+}
+
+
+.form-errors {
+    padding: 13px 16px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 70, 100, .07);
+
+    border: 1px solid rgba(255, 70, 100, .25);
+}
+
+
+.field-error {
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .post-create-page {
+        padding: 30px 12px 60px;
+    }
+
+    .post-card {
+        padding: 22px 20px;
+
+        border-radius: 20px;
+    }
+
+    .post-heading h1 {
+        font-size: 38px;
+    }
+
+    .post-icon {
+        display: none;
+    }
+
+    .post-form-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .publish-button {
+        width: 100%;
+    }
+}
